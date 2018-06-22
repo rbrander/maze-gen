@@ -1,0 +1,3 @@
+# Sample Maze Generator
+
+To view the this sample, load the index.html in a browser.  A maze will be generated in real time showing each step of the calculation. This was inspired by [Coding Train's Maze Generator](https://www.youtube.com/watch?v=HyK_Q5rrcr4) and the [wikipedia page for maze generation](https://en.wikipedia.org/wiki/Maze_generation_algorithm#Recursive_backtracker). In this sample, I've build the maze using depth-first recursive-backtracking. I realize some of the code is not written using best practices, and this because it was meant to prove to myself that I understand how this works.
