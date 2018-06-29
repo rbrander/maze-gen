@@ -13,7 +13,7 @@
     <p>
       <strong>Example:</strong>
       <code>
-        /api/v1/generateMaze/100/200
+        /api/v1/generate-maze/100/200
       </code>
       <small><i>(Where 100 and 200 are the width and height respectively)</i></small>
     </p>
@@ -27,7 +27,7 @@
         <input type="number" id="width" name="width" min="1" max="65535" step="1" value="40" />
         <label for="height">Maze height in cells:</label>
         <input type="number" id="height" name="height" min="1" max="65535" step="1" value="20" />
-        <button type="button" onclick="window.location=`/api/v1/generateMaze/${document.getElementById('width').value}/${document.getElementById('height').value}`">Generate Maze</button>
+        <button type="button" onclick="window.location=`/api/v1/generate-maze/${document.getElementById('width').value}/${document.getElementById('height').value}`">Generate Maze</button>
       </form>
     </p>
   </div>

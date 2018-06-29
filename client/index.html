@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Maze Generator</title>
+  <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
+  <style>
+    html, body { margin: 0; padding: 0; font-family: Arial; }
+    input {
+      border: 0;
+      font-size: 2rem;
+      width: 5rem;
+      text-align: right;
+    }
+  </style>
+</head>
+<body>
+  <center>
+    <h1>
+      Maze Generator (
+        <input type="number" id="txtNumXCells" value="40" min="3" max="1000" onchange="onChangeSize()" />
+      x
+        <input type="number" id="txtNumYCells" value="20" min="3" max="1000" onchange="onChangeSize()" />
+      )
+    </h1>
+    <canvas id="canvas" width="600" height="400">Canvas not supported</canvas>
+  </center>
+  <script type="text/javascript" src="maze-render.js" defer></script>
+</body>
+</html>
