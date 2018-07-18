@@ -4,12 +4,33 @@
   <title>Maze Generator</title>
   <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
   <style>
-    html, body { margin: 0; padding: 0; font-family: Arial; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial;
+      background-color: #cdcdcd;
+    }
     input {
       border: 0;
       font-size: 2rem;
       width: 5rem;
       text-align: right;
+      background-color: #cdcdcd;
+    }
+    nav {
+      margin: 1rem 0;
+      padding: 0;
+    }
+    nav button {
+      height: 3rem;
+      width: 10rem;
+      margin: 0.5rem 1rem;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+    button.selected {
+      background-color: #888;
+      color: white;
     }
   </style>
 </head>
@@ -17,11 +38,45 @@
   <center>
     <h1>
       Maze Generator (
-        <input type="number" id="txtNumXCells" value="40" min="3" max="1000" onchange="onChangeSize()" />
+      <input type="number" id="txtNumXCells" value="40" min="3" max="1000" onchange="onChangeSize()" />
       x
-        <input type="number" id="txtNumYCells" value="20" min="3" max="1000" onchange="onChangeSize()" />
+      <input type="number" id="txtNumYCells" value="20" min="3" max="1000" onchange="onChangeSize()" />
       )
     </h1>
+    <nav>
+      <button type="button" id="btnSolve" onclick="solve()">Solve</button>
+      <button type="button" id="btnSelectStart" onclick="selectStart()">Select Start Cell</button>
+      <button type="button" id="btnSelectEnd" onclick="selectEnd()">Select End Cell</button>
+      <script type="text/javascript">
+        const btnSelectStart = document.getElementById('btnSelectStart');
+        const btnSelectEnd = document.getElementById('btnSelectEnd');
+        const btnSolve = document.getElementById('btnSolve');
+        const allButtons = [btnSelectStart, btnSelectEnd, btnSolve];
+        // called by maze-render (must be a function so it will be hoisted)
+        function clearAllButtons() {
+          allButtons.forEach(btn => { btn.className = ''; });
+        }
+        const toggleButtonClass = (activeButton) => allButtons
+          .forEach(btn => {
+            btn.className = (
+              (activeButton === btn) &&
+              (activeButton.className !== 'selected')
+            ) ? 'selected' : '';
+          });
+        function selectStart() {
+          state.selecting = (state.selecting === 'start' ? '' : 'start');
+          toggleButtonClass(btnSelectStart);
+        }
+        function selectEnd() {
+          state.selecting = (state.selecting === 'end' ? '' : 'end');
+          toggleButtonClass(btnSelectEnd);
+        }
+        function solve() {
+          solveMaze();
+          // toggleButtonClass(btnSolve);
+        }
+      </script>
+    </nav>
     <canvas id="canvas" width="600" height="400">Canvas not supported</canvas>
   </center>
   <script type="text/javascript" src="maze-render.js" defer></script>
